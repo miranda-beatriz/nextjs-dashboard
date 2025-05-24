@@ -14,10 +14,10 @@ export default function Pagination({ }: { totalPages: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const currentPage = Number(searchParams.get('page')) || 1;
+  const _currentPage = Number(searchParams.get('page')) || 1;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const createPageURL = (pageNumber: number | string) => {
+  const _createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
     return `${pathname}?${params.toString()}`;
@@ -65,7 +65,7 @@ export default function Pagination({ }: { totalPages: number }) {
   );
 }
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function PaginationNumber({
+function _PaginationNumber({
   page,
   href,
   isActive,
@@ -97,7 +97,7 @@ function PaginationNumber({
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function PaginationArrow({
+function _PaginationArrow({
   href,
   direction,
   isDisabled,
