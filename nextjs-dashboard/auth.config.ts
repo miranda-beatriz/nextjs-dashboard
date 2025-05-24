@@ -30,13 +30,12 @@ export const authConfig = {
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
 
       if (isOnDashboard) {
-        // Bloqueia se não estiver logado → redireciona automaticamente para /login
+        
         return isLoggedIn;
       }
 
-      // Fora do dashboard, permite acesso sempre
       return true;
     },
   },
-  providers: [], // Pode adicionar provedores depois
+  providers: [], 
 } satisfies NextAuthConfig;
