@@ -3,18 +3,20 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { generatePagination } from '@/app/lib/utils';
+//import { generatePagination } from '@/app/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 
-export default function Pagination({ totalPages }: { totalPages: number }) {
+export default function Pagination({ }: { totalPages: number }) {
   // NOTE: Uncomment this code in Chapter 11
 
   // const allPages = generatePagination(currentPage, totalPages);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const currentPage = Number(searchParams.get('page')) || 1;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
@@ -62,7 +64,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     </>
   );
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function PaginationNumber({
   page,
   href,
@@ -94,6 +96,7 @@ function PaginationNumber({
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function PaginationArrow({
   href,
   direction,
