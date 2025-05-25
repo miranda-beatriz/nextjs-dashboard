@@ -18,30 +18,28 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" }
-      },
-      async authorize(credentials) {
-        if (
-          credentials?.username === "admin" &&
-          credentials?.password === "admin"
-        ) {
-          return {
-            id: "1",
-            name: "Admin",
-            email: "admin@example.com"
-          };
-        }
+  providers: [CredentialsProvider({
+    name: "Credentials",
+    credentials: {
+      username: { label: "Username", type: "text" },
+      password: { label: "Password", type: "password" }
+    },
+    async authorize(credentials: Record<string, unknown> | undefined) {
+      const username = credentials?.username as string | undefined;
+      const password = credentials?.password as string | undefined;
 
-        // Login inválido
-        return null;
+      if (username === "admin" && password === "admin") {
+        return {
+          id: "1",
+          name: "Admin",
+          email: "admin@example.com"
+        };
       }
-    })
-  ],
+
+      return null;
+    }
+  })
+],
   secret: process.env.NEXTAUTH_SECRET,
 } satisfies NextAuthConfig;
 
